@@ -38,6 +38,23 @@ int jouer(int** tab)
     }
 
 }
+void afficheGagne(int** tab)
+{
+    if(gagne(tab) == 1)
+    {
+        cout << "le joueur 1 a gagné" << endl;
+    }
+    else if(gagne(tab) == 2)
+    {
+        cout << "le joueur 2 a gagné" << endl;
+    }
+    else if (gagne(tab) == 0)
+    {
+        cout << "égalité" << endl;
+    }
+}
+
+
 int main()
 {
     int tab[6][7];
