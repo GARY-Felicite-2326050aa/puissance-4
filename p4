@@ -6,74 +6,49 @@ using namespace std;
 constexpr int h = 7;
 constexpr int l = 7;
 
-bool testDroite(const vector<vector<int>> & tab, const size_t & i, const size_t & j){
-   if(tab.at(i).at(j)==tab.at(i+1).at(j) && i<4 ){ //Vérifie si la 1ere case à droite est la même que celle ciblée
-       if(tab.at(i).at(j)==tab.at(i+2).at(j)){
-           if(tab.at(i).at(j)==tab.at(i+3).at(j) || tab.at(i).at(j)==tab.at(i-1).at(j)){
-               return true;
-           }
-       }
-
+bool testHorizontal(const vector<vector<int>> & tab, const size_t & joueur){
+   for(size_t j =0; j<7; j=j+1){
+   if(tab.at(3).at(j)==joueur && tab.at(6).at(j)==joueur && tab.at(5).at(j)==joueur && tab.at(6).at(j)==joueur) return true;
+   if(tab.at(3).at(j)==joueur && tab.at(2).at(j)==joueur && tab.at(1).at(j)==joueur && tab.at(0).at(j)==joueur) return true;
    }
    return false;
 }
 
-bool testGauche(const vector<vector<int>> & tab, const size_t & i, const size_t & j){
-   if(tab.at(i).at(j)==tab.at(i-1).at(j) && i>2){ //Vérifie si la 1ere case à gauche est la même que celle ciblée
-       if(tab.at(i).at(j)==tab.at(i-2).at(j)){
-           if(tab.at(i).at(j)==tab.at(i-3).at(j) || tab.at(i).at(j)==tab.at(i+1).at(j)){
-               return true;
-           }
-       }
-
-   }
+bool testVertical(const vector<vector<int>> & tab, const size_t & joueur){
+   for(size_t i =0; i<7; i=i+1){
+        if(tab.at(i).at(3)==joueur && tab.at(i).at(4)==joueur && tab.at(i).at(5)==joueur && tab.at(i).at(6)==joueur) return true;
+        if(tab.at(i).at(3)==joueur && tab.at(i).at(2)==joueur && tab.at(i).at(1)==joueur && tab.at(i).at(0)==joueur) return true;
+        }
+        return false;
    return false;
 }
 
-bool testBas(const vector<vector<int>> & tab, const size_t & i, const size_t & j){
-   if(tab.at(i).at(j)==tab.at(i).at(j+1) && j<3){ //Vérifie si la 1ere case EN BAS  est la même que celle ciblée
-       if(tab.at(i).at(j)==tab.at(i).at(j+2)){
-           if(tab.at(i).at(j)==tab.at(i).at(j+3) || tab.at(i).at(j)==tab.at(i).at(j-1)){
-               return true;
-           }
-       }
+bool testDiagonale(const vector<vector<int>> & tab, const size_t & joueur){
+    //Diagonale 1 (haut gauche)
+    for(size_t i =3; i<7; i=i+1){
+       for(size_t j=0 ; j<4 ; j=j+1){
+        if(tab.at(i).at(j)==joueur && tab.at(i-1).at(j+1)==joueur && tab.at(i-2).at(j+2)==joueur && tab.at(i-3).at(j+3)==joueur) return true; }}
+    //Diagonale 2 (haut droite)
+    for(size_t i =0; i<4; i=i+1){
+        for(size_t j=0 ; j<4 ; j=j+1){
+         if(tab.at(i).at(j)==joueur && tab.at(i+1).at(j+1)==joueur && tab.at(i+2).at(j+2)==joueur && tab.at(i+3).at(j+3)==joueur) return true; }}
+    //Diagonale 3 (bas droite)
+    for(size_t i =0; i<4; i=i+1){
+        for(size_t j=3; j<7 ; j=j+1){
+         if(tab.at(i).at(j)==joueur && tab.at(i+1).at(j-1)==joueur && tab.at(i+2).at(j-2)==joueur && tab.at(i+3).at(j-3)==joueur) return true; }}
+    //Diagonale 4 (bas gauche)
+    for(size_t i =3; i<7; i=i+1){
+        for(size_t j=3; j<7 ; j=j+1){
+         if(tab.at(i).at(j)==joueur && tab.at(i-1).at(j-1)==joueur && tab.at(i-2).at(j-2)==joueur && tab.at(i-3).at(j-3)==joueur) return true; }}
+    return false;
+    }
 
-   }
+
+
+int testVictoire(const vector<vector<int>> & tab, const size_t & i, const size_t & j, const size_t & joueur){
+   if(testHorizontal(tab, joueur)==true || testVertical(tab, joueur)==true || testDiagonale(tab, joueur) == true) return true;
    return false;
 }
-
-bool testDiago1(const vector<vector<int>> & tab, const size_t & i, const size_t & j){
-   if(tab.at(i).at(j)==tab.at(i-1).at(j-1) && j>2 && i>2 && tab.at(i).at(j)==tab.at(i-2).at(j-2) && tab.at(i).at(j)==tab.at(i-2).at(j-3) ) return true; //Vérifie si la diagonale 1 (du haut gauche) est la même que celle ciblée
-   if(tab.at(i).at(j)==tab.at(i-1).at(j-1) && j>1 && i>1 && tab.at(i).at(j)==tab.at(i-2).at(j-2) && tab.at(i).at(j)==tab.at(i+1).at(j+1) ) return true;
-   return false;
-}
-
-bool testDiago2(const vector<vector<int>> & tab, const size_t & i, const size_t & j){
-   if(tab.at(i).at(j)==tab.at(i-1).at(j+1) && j<3 && i>2 && tab.at(i).at(j)==tab.at(i-2).at(j+2) && tab.at(i).at(j)==tab.at(i-2).at(j+3) ) return true; //Vérifie si la diagonale 2 (du bas gauche) est la même que celle ciblée
-   if(tab.at(i).at(j)==tab.at(i-1).at(j+1) && j<4 && i>1 && tab.at(i).at(j)==tab.at(i-2).at(j+2) && tab.at(i).at(j)==tab.at(i+1).at(j-1) ) return true;
-   return false;
-}
-
-bool testDiago3(const vector<vector<int>> & tab, const size_t & i, const size_t & j){
-   if(tab.at(i).at(j)==tab.at(i+1).at(j+1) && j<3 && i<4 && tab.at(i).at(j)==tab.at(i+2).at(j+2) && tab.at(i).at(j)==tab.at(i+2).at(j+3) ) return true; //Vérifie si la diagonale 3 (du bas droite) est la même que celle ciblée
-   if(tab.at(i).at(j)==tab.at(i+1).at(j+1) && j<4 && i<5 && tab.at(i).at(j)==tab.at(i+2).at(j+2) && tab.at(i).at(j)==tab.at(i-1).at(j-1) ) return true;
-   return false;
-}
-
-bool testDiago4(const vector<vector<int>> & tab, const size_t & i, const size_t & j){
-   if(tab.at(i).at(j)==tab.at(i+1).at(j-1) && j>2 && i<4 && tab.at(i).at(j)==tab.at(i+2).at(j-2) && tab.at(i).at(j)==tab.at(i+2).at(j-3) ) return true; //Vérifie si la diagonale 3 (du bas droite) est la même que celle ciblée
-   if(tab.at(i).at(j)==tab.at(i+1).at(j-1) && j>1 && i<5 && tab.at(i).at(j)==tab.at(i+2).at(j-2) && tab.at(i).at(j)==tab.at(i-1).at(j+1) ) return true;
-   return false;
-}
-
-int testVictoire(const vector<vector<int>> & tab, const size_t & i, const size_t & j){
-   if(testDroite(tab,i,j)==true || testGauche(tab,i,j)==true || testBas(tab,i,j)==true ||testDiago1(tab,i,j)==true || testDiago2(tab,i,j)==true ||testDiago3(tab,i,j)==true || testDiago4(tab,i,j)==true) return true;
-   return false;
-}
-
-
-
-
 
 
 int test (vector<vector<int>> & tab, const int & i) {
