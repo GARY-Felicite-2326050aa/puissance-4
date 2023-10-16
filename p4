@@ -130,7 +130,7 @@ int main()
                 tab.at(test(tab,i-1)).at(i-1)= 2;
                 j2 = false;
                 j1 = true;
-
+ 
                 aff(tab);
                 if(testVictoire(tab, 2) == true) {
                     cout<< "LE JOUEUR 2 A GAGNE ";
