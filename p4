@@ -98,7 +98,7 @@ int main()
     while (true) {
 
         if (j1==true) {
-            cout << "Choisi ta colone J1 :"<< endl;
+            cout << "Choisis ta colone J1 :"<< endl;
             cin >> i;
 
             if (i-1 <= 6) {
@@ -122,7 +122,7 @@ int main()
 
             }
             if (j2==true) {
-                cout << "Choisi ta colone J2 :"<< endl;
+                cout << "Choisis ta colone J2 :"<< endl;
                 cin >> i;
                 if (i-1 <= 6) {
                         if(tab.at(0).at(i-1) != 0) {
