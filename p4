@@ -49,7 +49,7 @@ bool testDiagonale(const vector<vector<int>> & tab, const int & joueur){
 
 
 int testVictoire(const vector<vector<int>> & tab, const size_t & joueur){
-    if(testHorizontal(tab, joueur)==true || testVertical(tab, joueur)==true || testDiagonale(tab, joueur) == true) return false;
+    if(testHorizontal(tab, joueur)==true || testVertical(tab, joueur)==true || testDiagonale(tab, joueur) == true) return true;
     return false;
 }
 size_t test (vector<vector<int>> & tab, const int & i) {
