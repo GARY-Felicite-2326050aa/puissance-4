@@ -6,7 +6,7 @@ using namespace std;
 constexpr int h = 7;
 constexpr int l = 7;
 
-bool testHorizontal(const vector<vector<int>> & tab, const size_t & joueur){
+bool testHorizontal(const vector<vector<int>> & tab, const int & joueur){
     for(size_t j =0; j<7; j=j+1){
         if(tab.at(3).at(j)==joueur && tab.at(4).at(j)==joueur && tab.at(5).at(j)==joueur && tab.at(6).at(j)==joueur) return true;
         if(tab.at(3).at(j)==joueur && tab.at(2).at(j)==joueur && tab.at(1).at(j)==joueur && tab.at(0).at(j)==joueur) return true;
@@ -16,7 +16,7 @@ bool testHorizontal(const vector<vector<int>> & tab, const size_t & joueur){
     return false;
 }
 
-bool testVertical(const vector<vector<int>> & tab, const size_t & joueur){
+bool testVertical(const vector<vector<int>> & tab, const int & joueur){
     for(size_t i =0; i<7; i=i+1){
         if(tab.at(i).at(3)==joueur && tab.at(i).at(4)==joueur && tab.at(i).at(5)==joueur && tab.at(i).at(6)==joueur) return true;
         if(tab.at(i).at(3)==joueur && tab.at(i).at(2)==joueur && tab.at(i).at(1)==joueur && tab.at(i).at(0)==joueur) return true;
@@ -26,7 +26,7 @@ bool testVertical(const vector<vector<int>> & tab, const size_t & joueur){
     return false;
 }
 
-bool testDiagonale(const vector<vector<int>> & tab, const size_t & joueur){
+bool testDiagonale(const vector<vector<int>> & tab, const int & joueur){
     //Diagonale 1 (haut gauche)
     for(size_t i =3; i<7; i=i+1){
         for(size_t j=0 ; j<4 ; j=j+1){
@@ -108,6 +108,7 @@ int main()
                     tab.at(test(tab,i-1)).at(i-1)= 1;
                     j1 = false;
                     j2 = true;
+                    system("clear");
                     aff(tab);
                     if(testVictoire(tab, 1) == true) {
                         cout<< "LE JOUEUR 1 A GAGNE "<<endl;
@@ -131,7 +132,7 @@ int main()
                         tab.at(test(tab,i-1)).at(i-1)= 2;
                         j2 = false;
                         j1 = true;
-
+                        system("clear");
                         aff(tab);
                         if(testVictoire(tab, 2) == true) {
                             cout<< "LE JOUEUR 2 A GAGNE "<<endl;
