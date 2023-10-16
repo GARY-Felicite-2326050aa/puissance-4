@@ -98,10 +98,9 @@ int main()
             cin >> i;
 
             if (i-1 <= 6) {
-                if (test(tab,i-1)==0) {
-                    if(tab.at(test(tab,i-1)).at(i-1) != 0) {
-                        cout<<"err"<<endl;
-                    }
+                if(tab.at(0).at(i-1) != 0) {
+                    cout<<"err"<<endl;
+
                 } else {
                 tab.at(test(tab,i-1)).at(i-1)= 1;
                 j1 = false;
@@ -122,11 +121,10 @@ int main()
             cout << "Choisi ta colone J2 :"<< endl;
             cin >> i;
             if (i-1 <= 6) {
-                if (test(tab,i-1)==0) {
-                    if(tab.at(test(tab,i-1)).at(i-1) != 0) {
-                        cout<<"err"<<endl;
-                    }
-                } else {
+                if(tab.at(0).at(i-1) != 0) {
+                    cout<<"err"<<endl;
+
+                }else {
                 tab.at(test(tab,i-1)).at(i-1)= 2;
                 j2 = false;
                 j1 = true;
