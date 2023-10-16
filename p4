@@ -98,11 +98,8 @@ int main()
 
     while (true) {
 
-        if(cpt == 49) {
-            cout << "EGALITE"<<endl;
-            break;
-        }
-        cpt= cpt+1;
+        
+        
         if (j1==true) {
             cout << "Choisis ta colone J1 :"<< endl;
             cin >> i;
@@ -112,6 +109,7 @@ int main()
                         cout<<err<<endl;
 
                 } else {
+                    cpt= cpt+1;
                     tab.at(test(tab,i-1)).at(i-1)= 1;
                     j1 = false;
                     j2 = true;
@@ -136,6 +134,7 @@ int main()
                             cout<<err<<endl;
                         }
                      else {
+                        cpt= cpt+1;
                         tab.at(test(tab,i-1)).at(i-1)= 2;
                         j2 = false;
                         j1 = true;
@@ -151,7 +150,10 @@ int main()
 
                 }
 
-
+                if(cpt == 49) {
+                cout << "EGALITE"<<endl;
+                break;
+                }
             }
 
 
