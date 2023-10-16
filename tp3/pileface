@@ -1,0 +1,48 @@
+#include <iostream>
+
+using namespace std;
+
+
+void pileface(){
+    int p = 1;
+    int f = 2;
+    int e = 3;
+    int rep;
+    int cpt1, cpt2 = 0;
+    string joueur1, joueur2;
+    cout << "Nom joueur 1 :";
+    cin>>joueur1;
+    cout << "Nom joueur 2 :";
+    cin>>joueur2;
+    while (true)
+    {
+        cout << joueur1 << " choisi Pile(1) ou Face(2)? sortir(3)" << endl;
+        cin>>rep;
+        if (rep == p)
+        {
+            cout << joueur1 << " a gagné!" << endl;
+            cpt1 += 1 ;
+            cout << cpt1 << "-" << cpt2 << endl;
+        }
+        if (rep == f)
+        {
+            cout << joueur2 << " a gagné" << endl;
+            cpt2 += 1;
+            cout << cpt1 << "-" << cpt2 << endl;
+        }
+        if (rep == e)
+        {
+            cout << "le score final est " << cpt1 << "-" << cpt2 << endl;
+            break;
+        }
+    }
+
+}
+
+
+
+int main()
+{
+    pileface();
+    return 0;
+}
