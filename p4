@@ -49,7 +49,7 @@ bool testDiagonale(const vector<vector<int>> & tab, const int & joueur){
 
 
 int testVictoire(const vector<vector<int>> & tab, const size_t & joueur){
-    if(testHorizontal(tab, joueur)==true || testVertical(tab, joueur)==true || testDiagonale(tab, joueur) == true) return true;
+    if(testHorizontal(tab, joueur)==true || testVertical(tab, joueur)==true || testDiagonale(tab, joueur) == true) return false;
     return false;
 }
 size_t test (vector<vector<int>> & tab, const int & i) {
@@ -80,6 +80,8 @@ void aff(vector<vector<int>> & tab) {
 int main()
 {
     int i;
+    string err = "ERR: vous ne pouvez pas positionner votre pion ici !";
+    size_t cpt = 0;
     bool j1 = true;
     bool j2 = false;
     //CREER LE JEUX AVEC QUE DES 0
@@ -96,13 +98,18 @@ int main()
 
     while (true) {
 
+        if(cpt == 49) {
+            cout << "EGALITE"<<endl;
+            break;
+        }
+        cpt= cpt+1;
         if (j1==true) {
             cout << "Choisis ta colone J1 :"<< endl;
             cin >> i;
 
             if (i-1 <= 6) {
                     if(tab.at(0).at(i-1) != 0) {
-                        cout<<"err"<<endl;
+                        cout<<err<<endl;
 
                 } else {
                     tab.at(test(tab,i-1)).at(i-1)= 1;
@@ -115,7 +122,7 @@ int main()
                         break;
                     }
                 }} else {
-                    cout << "ERR: vous ne pouvez pas placer votre pion ici !" << endl;
+                    cout << err << endl;
                 }
 
 
@@ -126,7 +133,7 @@ int main()
                 cin >> i;
                 if (i-1 <= 6) {
                         if(tab.at(0).at(i-1) != 0) {
-                            cout<<"err"<<endl;
+                            cout<<err<<endl;
                         }
                      else {
                         tab.at(test(tab,i-1)).at(i-1)= 2;
@@ -139,10 +146,11 @@ int main()
                             break;
                         }
                     } }else {
-                        cout << "ERR: vous ne pouvez pas placer votre pion ici !" << endl;
+                        cout << err << endl;
                     }
 
                 }
+
 
             }
 
