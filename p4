@@ -8,7 +8,7 @@ constexpr int l = 7;
 
 bool testHorizontal(const vector<vector<int>> & tab, const size_t & joueur){
     for(size_t j =0; j<7; j=j+1){
-        if(tab.at(3).at(j)==joueur && tab.at(6).at(j)==joueur && tab.at(5).at(j)==joueur && tab.at(6).at(j)==joueur) return true;
+        if(tab.at(3).at(j)==joueur && tab.at(4).at(j)==joueur && tab.at(5).at(j)==joueur && tab.at(6).at(j)==joueur) return true;
         if(tab.at(3).at(j)==joueur && tab.at(2).at(j)==joueur && tab.at(1).at(j)==joueur && tab.at(0).at(j)==joueur) return true;
         if(tab.at(4).at(j)==joueur && tab.at(3).at(j)==joueur && tab.at(2).at(j)==joueur && tab.at(1).at(j)==joueur) return true;
         if(tab.at(2).at(j)==joueur && tab.at(3).at(j)==joueur && tab.at(4).at(j)==joueur && tab.at(5).at(j)==joueur) return true;
@@ -23,7 +23,6 @@ bool testVertical(const vector<vector<int>> & tab, const size_t & joueur){
         if(tab.at(i).at(2)==joueur && tab.at(i).at(3)==joueur && tab.at(i).at(4)==joueur && tab.at(i).at(5)==joueur) return true;
         if(tab.at(i).at(4)==joueur && tab.at(i).at(3)==joueur && tab.at(i).at(2)==joueur && tab.at(i).at(1)==joueur) return true;
     }
-    return false;
     return false;
 }
 
