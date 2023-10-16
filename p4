@@ -107,7 +107,9 @@ int main()
                 j1 = false;
                 j2 = true;
                 aff(tab);
-                //if(testVictoire(tab,i+1,test(tab,i+1)) == true) {cout<< "LE JOUEUR 1 A GEGNER ";}
+                if(testVictoire(tab, 1) == true) {
+                    cout<< "LE JOUEUR 1 A GAGNE ";
+                    break;
                 }
             } else {
                 cout << "ERR: vous ne pouvez pas placer votre pion ici !" << endl;
@@ -130,10 +132,11 @@ int main()
                 j1 = true;
 
                 aff(tab);
-                //testVictoire(tab,i+1,test(tab,i+1));
+                if(testVictoire(tab, 2) == true) {
+                    cout<< "LE JOUEUR 2 A GAGNE ";
+                    break;
                 }
-            } else
-            {
+            } else {
                 cout << "ERR: vous ne pouvez pas placer votre pion ici !" << endl;
             }
 
