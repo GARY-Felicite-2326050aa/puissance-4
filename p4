@@ -49,22 +49,20 @@ int testVictoire(const vector<vector<int>> & tab, const size_t & joueur){
    if(testHorizontal(tab, joueur)==true || testVertical(tab, joueur)==true || testDiagonale(tab, joueur) == true) return true;
    return false;
 }
-
-
-int test (vector<vector<int>> & tab, const int & i) {
+size_t test (vector<vector<int>> & tab, const int & i) {
     int j = 6;
-    const string a = "err colone pleine !";
+
     while(true) {
         if (j < 0){
-            if (tab.at(j).at(i) != 0) {
-            //TABLEAU DEPASSER ERREUR
-            }
-
+            break;
         }
+
         if (tab.at(j).at(i) == 0) {return j;}
 
         j=j-1;
+
     }
+    return 0;
 }
 void aff(vector<vector<int>> & tab) {
     srand(time(nullptr));
@@ -84,47 +82,58 @@ int main()
     //CREER LE JEUX AVEC QUE DES 0
     vector<vector<int> > tab(l, vector<int> (h, 0));
 
-        srand(time(nullptr));
-        for (auto &item : tab) {
-            for (auto &i : item) {
-                i = 0;
-            }
+    srand(time(nullptr));
+    for (auto &item : tab) {
+        for (auto &i : item) {
+            i = 0;
         }
+    }
     //JEUX + REMPLISSAGE DU JEUX
     aff(tab);
+
     while (true) {
 
         if (j1==true) {
             cout << "Choisi ta colone J1 :"<< endl;
             cin >> i;
-            if (i-1 <= 7) {
+
+            if (i-1 <= 6) {
+                if (test(tab,i-1)==0) {
+                    if(tab.at(test(tab,i-1)).at(i) != 0) {
+                        cout<<"err"<<endl;
+                    }
+                } else {
                 tab.at(test(tab,i-1)).at(i-1)= 1;
                 j1 = false;
                 j2 = true;
                 aff(tab);
-                if(testVictoire(tab, 1) == true) {
-                    cout<< "LE JOUEUR 1 A GAGNE ";
-                    break;
+                //if(testVictoire(tab,i+1,test(tab,i+1)) == true) {cout<< "LE JOUEUR 1 A GEGNER ";}
                 }
             } else {
                 cout << "ERR: vous ne pouvez pas placer votre pion ici !" << endl;
             }
 
 
+
         }
         if (j2==true) {
             cout << "Choisi ta colone J2 :"<< endl;
             cin >> i;
-            if (i-1 <= 7) {
+            if (i-1 <= 6) {
+                if (test(tab,i-1)==0) {
+                    if(tab.at(test(tab,i-1)).at(i) != 0) {
+                        cout<<"err"<<endl;
+                    }
+                } else {
                 tab.at(test(tab,i-1)).at(i-1)= 2;
                 j2 = false;
                 j1 = true;
+
                 aff(tab);
-                if(testVictoire(tab, 2) == true) {
-                    cout<< "LE JOUEUR 2 A GAGNE ";
-                    break;
+                //testVictoire(tab,i+1,test(tab,i+1));
                 }
-            } else {
+            } else
+            {
                 cout << "ERR: vous ne pouvez pas placer votre pion ici !" << endl;
             }
 
