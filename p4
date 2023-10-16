@@ -99,7 +99,7 @@ int main()
 
             if (i-1 <= 6) {
                 if (test(tab,i-1)==0) {
-                    if(tab.at(test(tab,i-1)).at(i) != 0) {
+                    if(tab.at(test(tab,i-1)).at(i-1) != 0) {
                         cout<<"err"<<endl;
                     }
                 } else {
@@ -123,7 +123,7 @@ int main()
             cin >> i;
             if (i-1 <= 6) {
                 if (test(tab,i-1)==0) {
-                    if(tab.at(test(tab,i-1)).at(i) != 0) {
+                    if(tab.at(test(tab,i-1)).at(i-1) != 0) {
                         cout<<"err"<<endl;
                     }
                 } else {
