@@ -97,9 +97,12 @@ int main()
     aff(tab);
 
     while (true) {
+        if(cpt == 49) {
+        cout << "EGALITE"<<endl;
+        break;
+        }
 
-        
-        
+
         if (j1==true) {
             cout << "Choisis ta colone J1 :"<< endl;
             cin >> i;
@@ -150,10 +153,7 @@ int main()
 
                 }
 
-                if(cpt == 49) {
-                cout << "EGALITE"<<endl;
-                break;
-                }
+
             }
 
 
