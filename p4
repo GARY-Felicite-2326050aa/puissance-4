@@ -97,12 +97,12 @@ int main()
         if (j1==true) {
             cout << "Choisi ta colone J1 :"<< endl;
             cin >> i;
-            if (i-1 <= 6) {
+            if (i-1 <= 7) {
                 tab.at(test(tab,i-1)).at(i-1)= 1;
                 j1 = false;
                 j2 = true;
                 aff(tab);
-                if(testVictoire(tab,i+1,test(tab,i+1)) == true) {cout<< "LE JOUEUR 1 A GEGNER ";}
+                if(testVictoire(tab, 1) == true) {cout<< "LE JOUEUR 1 A GAGNE ";}
             } else {
                 cout << "ERR: vous ne pouvez pas placer votre pion ici !" << endl;
             }
@@ -112,14 +112,13 @@ int main()
         if (j2==true) {
             cout << "Choisi ta colone J2 :"<< endl;
             cin >> i;
-            if (i-1 <= 6) {
+            if (i-1 <= 7) {
                 tab.at(test(tab,i-1)).at(i-1)= 2;
                 j2 = false;
                 j1 = true;
                 aff(tab);
-                testVictoire(tab,i+1,test(tab,i+1));
-            } else
-            {
+                if(testVictoire(tab, 2) == true) {cout<< "LE JOUEUR 2 A GAGNE ";}
+            } else {
                 cout << "ERR: vous ne pouvez pas placer votre pion ici !" << endl;
             }
 
